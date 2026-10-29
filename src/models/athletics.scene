@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene author="laura" formatVersion="1.1" >
+  <nodes >
+    <node name="yellow_ball" >
+      <position x="-15.000000" y="15.336480" z="0.000000" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <entity meshFile="yellow_ball.mesh" name="yellow_ball" />
+    </node>
+    <node name="red_ball" >
+      <position x="15.000000" y="15.336480" z="0.000000" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <entity meshFile="red_ball.mesh" name="red_ball" />
+    </node>
+    <node name="Sun" >
+      <position x="46.758095" y="134.131165" z="26.527702" />
+      <rotation qw="1.000000" qx="0.000000" qy="0.000000" qz="0.000000" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <light name="Sun" powerScale="100.0" type="point" >
+        <colourDiffuse b="1.000000" g="1.000000" r="1.000000" />
+        <colourSpecular b="1.000000" g="1.000000" r="1.000000" />
+        <lightAttenuation constant="1.0" linear="0.040000" quadratic="0.0" range="5000" />
+      </light>
+    </node>
+    <node name="MainCamera" >
+      <position x="0.000000" y="60.000000" z="-150.000000" />
+      <rotation qw="0.002405" qx="-0.004120" qy="0.983850" qz="0.178934" />
+      <scale x="1.000000" y="1.000000" z="1.000000" />
+      <camera fov="0.503380" name="MainCamera" projectionType="perspective" >
+        <clipping far="10000.000000" near="0.100000" />
+      </camera>
+    </node>
+  </nodes>
+  <externals >
+    <item type="material" >
+      <file name="yellow_material" />
+    </item>
+    <item type="material" >
+      <file name="red_material" />
+    </item>
+  </externals>
+  <environment >
+    <colourAmbient b="0.447978" g="0.447978" r="0.447978" />
+    <colourBackground b="0.050000" g="0.050000" r="0.050000" />
+  </environment>
+</scene>
