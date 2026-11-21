@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 ## -- Packages
 find_package(OGRE REQUIRED)
+find_package(Bullet REQUIRED)
 
 ## -- Targets
 subdirs(src)

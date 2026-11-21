@@ -31,7 +31,7 @@ loadResources( )
     auto settings = cf.getSettingsBySection( );
     for( auto sIt = settings.begin( ); sIt != settings.end( ); ++sIt )
         for( auto fIt = sIt->second.begin( ); fIt != sIt->second.end( ); ++fIt)
-            res_mgr->addResourceLocation( fIt->second, fIt->first, sIt->first );
+            res_mgr->addResourceLocation( fIt->second, fIt->first, sIt->first, false );
 
     try
     {
@@ -50,6 +50,7 @@ setup( )
 {
     this->_initSceneManager( );
     this->_loadScene( );
+    this->_configurePhysics( );
     this->_configureCamera( );
 }
 
@@ -61,13 +62,37 @@ frameStarted( const Ogre::FrameEvent& evt )
 }
 
 //----------------------------------------------------------------------------------
+void Application::
+frameRendered( const Ogre::FrameEvent& evt )
+{
+    this->m_Physics.update( evt.timeSinceLastFrame );
+    this->m_CameraMgr.update( );
+}
+
+//----------------------------------------------------------------------------------
 bool Application::
 keyPressed( const OgreBites::KeyboardEvent& evt )
 {
     if( evt.keysym.sym == OgreBites::SDLK_ESCAPE){
         this->getRoot( )->queueEndRendering( );
     }
+
+    if( evt.keysym.sym == '1' ) this->m_CameraMgr.select( CameraManager::Fixed );
+    if( evt.keysym.sym == '2' ) this->m_CameraMgr.select( CameraManager::Ball );
+    if( evt.keysym.sym == '3' ) this->m_CameraMgr.select( CameraManager::Global );
+    if( evt.keysym.sym == 'c' ) this->m_CameraMgr.setCycling( true );
+
     return( true );
+}
+//----------------------------------------------------------------------------------
+// Al soltar la tecla C se deja de cambiar de cámara con la rueda
+bool Application::
+keyReleased( const OgreBites::KeyboardEvent& evt )
+{
+    if( evt.keysym.sym == 'c' ){
+        this->m_CameraMgr.setCycling( false );
+    }
+    return ( true );
 }
 
 //-----------------------------------------------------------------------------------
@@ -99,18 +124,24 @@ _initSceneManager( )
 void Application::
 _configureCamera( )
 {
-    auto* cam = this->m_SceneMgr->getCameras( ).begin( )->second;
-    cam->setAutoAspectRatio( true );
+    this->m_CameraMgr.build( this->m_SceneMgr, this->getRenderWindow( ), "yellow_ball" );
+    this->addInputListener( &this->m_CameraMgr );
+}
 
-    auto* camman = new OgreBites::CameraMan( cam-> getParentSceneNode( ) );
-    camman->setStyle( OgreBites::CS_ORBIT );
-    this->addInputListener( camman );
-    this->getRenderWindow( )->addViewport( cam );
+void Application::
+_configurePhysics( )
+{
+    this->m_Physics.build(
+        this->m_SceneMgr->getRootSceneNode( ), Ogre::Vector3( 0, -9.81f, 0 )
+        );
+    this->m_Physics.setSimulating( true );
 }
 
 void Application::
 _loadScene( )
 {
+    //this->m_SceneMgr->setDisplaySceneNodes( true );   // en _loadScene, para probar
     auto* root = this->m_SceneMgr->getRootSceneNode( );
-    root->loadChildren( "athletics.scene");
+    root->loadChildren( "campo.scene");
+    root->loadChildren( "bala.scene");
 }

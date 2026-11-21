@@ -1,12 +1,14 @@
 add_executable(
-  myFirstOGREApp
+  animacionBalaApp
   Application.cxx
+  PhysicsModel.cxx
+  CameraManager.cxx
   main.cxx
   )
 target_link_libraries(
-  myFirstOGREApp
+  animacionBalaApp
   stdc++fs
-  OgreMain OgreBites
+  OgreMain OgreBites OgreBullet
   )
 
 configure_file(
@@ -15,9 +17,9 @@ configure_file(
   @ONLY
   )
 
-add_custom_target(myFirstOGREApp_models ALL
-  COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/models ${CMAKE_CURRENT_BINARY_DIR}/models
-  DEPENDS myFirstOGREApp
+add_custom_target(animacionBalaApp_models ALL
+    COMMAND ${CMAKE_COMMAND} -E copy_directory_if_different ${CMAKE_CURRENT_SOURCE_DIR}/models ${CMAKE_CURRENT_BINARY_DIR}/models
+    DEPENDS animacionBalaApp
   )
 
 ## eof - CMakeLists.txt

@@ -2,9 +2,10 @@
 #define __Application__h__
 
 #include <OgreApplicationContext.h>
+#include "PhysicsModel.h"
+#include "CameraManager.h"
 
 namespace Ogre      { class Entity; }
-namespace OgreBites { class CameraMan; }
 
 class Application
     : public OgreBites::ApplicationContext,
@@ -24,8 +25,9 @@ public:
 
     // Interactive methods
     virtual bool frameStarted( const Ogre::FrameEvent& evt ) override;
+    virtual void frameRendered( const Ogre::FrameEvent& evt ) override;
     virtual bool keyPressed( const OgreBites::KeyboardEvent& evt ) override;
-
+    virtual bool keyReleased( const OgreBites::KeyboardEvent& evt ) override;
     // Main method
     virtual void go( );
 
@@ -33,12 +35,16 @@ protected:
     virtual void _initSceneManager( );
     virtual void _configureCamera( );
     virtual void _loadScene( );
+    virtual void _configurePhysics( );
 
 protected: 
     std::string m_ResourcesFile;
     
-    Ogre::SceneManager* m_SceneMgr;
-    OgreBites::CameraMan* m_CamMan;
+    Ogre::SceneManager* m_SceneMgr = nullptr;
+    CameraManager m_CameraMgr;
+    PhysicsModel m_Physics;
+    bool m_CameraKeyHeld = false;
 };
+
 
 #endif 
