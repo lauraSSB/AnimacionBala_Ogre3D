@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene author="laura" formatVersion="1.1" >
+  <nodes >
+    <node name="Marcas_Bala" >
+      <position x="0.0" y="0.0" z="0.0" />
+      <entity meshFile="Marcas_Bala.mesh" name="Marcas_Bala" />
+    </node>
+
+    <node name="yellow_ball" >
+      <scale x="0.02" y="0.02" z="0.02" />
+      <position x="-18" y="20" z="60.0" />
+      <entity meshFile="yellow_ball.mesh" name="yellow_ball" >
+        <userData>
+          <property name="collider" type="string" data="sphere" />
+          <property name="mass" type="float" data="7.26" />
+          <property name="restitution" type="float" data="1" />
+          <property name="friction" type="float" data="0.6" />
+        </userData>
+      </entity>
+    </node>
+
+    <node name="red_ball" >
+      <position x="15.0" y="15.0" z="0.0" />
+      <entity meshFile="red_ball.mesh" name="red_ball" >
+        <userData>
+          <property name="collider" type="string" data="sphere" />
+          <property name="mass" type="float" data="1" />
+          <property name="restitution" type="float" data="0.8" />
+          <property name="friction" type="float" data="0.6" />
+        </userData>
+      </entity>
+    </node>
+
+    <node name="MainCamera" >
+      <position x="0.0" y="60.0" z="-150.0" />
+      <rotation qw="0.002405" qx="-0.004120" qy="0.983850" qz="0.178934" />
+      <camera fov="0.503380" name="MainCamera" projectionType="perspective" >
+        <clipping far="10000.0" near="0.1" />
+      </camera>
+    </node>
+    
+
+    <node name="FixedCamera" >
+      <position x="-18" y="2" z="65.0" />
+      <rotation qw="0.999657" qx="-0.026177" qy="0.0" qz="0.0" />
+      <camera fov="0.503380" name="FixedCamera" projectionType="perspective" >
+        <clipping far="10000.0" near="0.1" />
+      </camera>
+    </node>
+
+    <node name="BallCamera" >
+      <position x="-18.0" y="1.8" z="57.5" />
+      <camera fov="0.503380" name="BallCamera" projectionType="perspective" >
+        <clipping far="10000.0" near="0.05" />
+      </camera>
+    </node>
+
+    <node name="ManCamera" >
+      <position x="-18.0" y="1.8" z="60" />
+      <rotation qw="0.999657" qx="-0.026177" qy="0.0" qz="0.0" />
+      <camera fov="0.503380" name="ManCamera" projectionType="perspective" >
+        <clipping far="10000.0" near="0.05" />
+      </camera>
+    </node>
+  </nodes>
+</scene>

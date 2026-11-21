@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene author="laura" formatVersion="1.1" >
+  <nodes >
+    <node name="GroundMesh" >
+      <position x="0.0" y="-0.15" z="0.0" />
+      <entity meshFile="Ground_malla.mesh" name="GroundMesh" >
+        <userData>
+          <property name="collider" type="string" data="trimesh" />
+          <property name="mass" type="float" data="0" />
+          <property name="restitution" type="float" data="1" />
+          <property name="friction" type="float" data="0.6" />
+        </userData>
+      </entity>
+    </node>
+
+    <node name="Pista" >
+        <position x="0.0" y="-0.10" z="0.0" />
+        <entity meshFile="Pista.mesh" name="Pista" >
+            <userData>
+            <property name="collider" type="string" data="trimesh" />
+            <property name="mass" type="float" data="0" />
+            <property name="restitution" type="float" data="1" />
+            <property name="friction" type="float" data="0.6" />
+            </userData>
+        </entity>
+    </node>
+
+    <node name="Campo" >
+    <position x="0.0" y="-0.05" z="0.0" />
+    <entity meshFile="Campo.mesh" name="Campo" >
+        <userData>
+        <property name="collider" type="string" data="trimesh" />
+        <property name="mass" type="float" data="0" />
+        <property name="restitution" type="float" data="1" />
+        <property name="friction" type="float" data="0.6" />
+        </userData>
+    </entity>
+    </node>
+
+    <node name="Pista_Lineas" >
+      <position x="0.0" y="0.0" z="0.0" />
+      <entity meshFile="Pista_Lineas.mesh" name="Pista_Lineas" />
+    </node>
+
+    <node name="Sun" >
+      <position x="46.758095" y="134.131165" z="26.527702" />
+      <light name="Sun" powerScale="1.0" type="directional" >
+        <normal x="-0.3" y="-1.0" z="-0.2" />
+        <colourDiffuse r="1.0" g="0.96" b="0.88" />
+        <colourSpecular r="1.0" g="1.0" b="1.0" />
+      </light>
+    </node>
+  </nodes>
+  <environment >
+    <colourBackground r="0.050876" g="0.050876" b="0.050876" />
+  </environment>
+</scene>
