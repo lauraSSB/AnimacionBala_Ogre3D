@@ -25,3 +25,17 @@ material yellow_material {
         }
     }
 }
+
+material RubberDuck
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture RubberDuck_BaseColor.png
+            }
+        }
+    }
+}

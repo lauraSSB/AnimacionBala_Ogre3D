@@ -1,0 +1,90 @@
+material ShotMeter/Back
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_check off
+            depth_write off
+
+            texture_unit
+            {
+                colour_op_ex source1 src_manual src_current 0.1 0.1 0.1
+            }
+        }
+    }
+}
+
+material ShotMeter/Green
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_check off
+            depth_write off
+
+            texture_unit
+            {
+                colour_op_ex source1 src_manual src_current 0.2 0.8 0.2
+            }
+        }
+    }
+}
+
+material ShotMeter/Red
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_check off
+            depth_write off
+
+            texture_unit
+            {
+                colour_op_ex source1 src_manual src_current 0.9 0.15 0.15
+            }
+        }
+    }
+}
+
+material ShotMeter/Marker
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_check off
+            depth_write off
+
+            texture_unit
+            {
+                colour_op_ex source1 src_manual src_current 1 1 1
+            }
+        }
+    }
+}
+
+material ShotMeter/Gradient
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_check off
+            depth_write off
+
+            texture_unit
+            {
+                texture shot_meter_gradient.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}

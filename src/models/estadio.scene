@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene formatVersion="1.1">
+  <nodes>
+    <!-- Gradas: el perfil se exporto invertido (lo mas alto quedaba junto a la pista).
+         Se voltean en Y (escala -1) y se suben 24.3 para que la fila baja quede en y = 0 -->
+    <node name="Gradas">
+      <position x="0" y="24.3" z="0"/>
+      <scale x="1" y="1" z="1"/>
+      <node name="Gradas_01"><entity name="Gradas_01" meshFile="Gradas_01.mesh"/></node>
+      <node name="Gradas_02"><entity name="Gradas_02" meshFile="Gradas_02.mesh"/></node>
+      <node name="Gradas_03"><entity name="Gradas_03" meshFile="Gradas_03.mesh"/></node>
+      <node name="Gradas_04"><entity name="Gradas_04" meshFile="Gradas_04.mesh"/></node>
+      <node name="Gradas_05"><entity name="Gradas_05" meshFile="Gradas_05.mesh"/></node>
+      <node name="Gradas_06"><entity name="Gradas_06" meshFile="Gradas_06.mesh"/></node>
+      <node name="Gradas_07"><entity name="Gradas_07" meshFile="Gradas_07.mesh"/></node>
+      <node name="Gradas_08"><entity name="Gradas_08" meshFile="Gradas_08.mesh"/></node>
+      <node name="Gradas_09"><entity name="Gradas_09" meshFile="Gradas_09.mesh"/></node>
+      <node name="Gradas_10"><entity name="Gradas_10" meshFile="Gradas_10.mesh"/></node>
+      <node name="Gradas_11"><entity name="Gradas_11" meshFile="Gradas_11.mesh"/></node>
+      <node name="Gradas_12"><entity name="Gradas_12" meshFile="Gradas_12.mesh"/></node>
+      <node name="Gradas_13"><entity name="Gradas_13" meshFile="Gradas_13.mesh"/></node>
+      <node name="Gradas_14"><entity name="Gradas_14" meshFile="Gradas_14.mesh"/></node>
+      <node name="Gradas_15"><entity name="Gradas_15" meshFile="Gradas_15.mesh"/></node>
+      <node name="Gradas_16"><entity name="Gradas_16" meshFile="Gradas_16.mesh"/></node>
+      <node name="Gradas_17"><entity name="Gradas_17" meshFile="Gradas_17.mesh"/></node>
+      <node name="Gradas_18"><entity name="Gradas_18" meshFile="Gradas_18.mesh"/></node>
+      <node name="Gradas_19"><entity name="Gradas_19" meshFile="Gradas_19.mesh"/></node>
+      <node name="Gradas_20"><entity name="Gradas_20" meshFile="Gradas_20.mesh"/></node>
+      <node name="Gradas_21"><entity name="Gradas_21" meshFile="Gradas_21.mesh"/></node>
+      <node name="Gradas_22"><entity name="Gradas_22" meshFile="Gradas_22.mesh"/></node>
+      <node name="Gradas_23"><entity name="Gradas_23" meshFile="Gradas_23.mesh"/></node>
+      <node name="Gradas_24"><entity name="Gradas_24" meshFile="Gradas_24.mesh"/></node>
+      <node name="Gradas_25"><entity name="Gradas_25" meshFile="Gradas_25.mesh"/></node>
+      <node name="Gradas_26"><entity name="Gradas_26" meshFile="Gradas_26.mesh"/></node>
+      <node name="Gradas_27"><entity name="Gradas_27" meshFile="Gradas_27.mesh"/></node>
+      <node name="Gradas_28"><entity name="Gradas_28" meshFile="Gradas_28.mesh"/></node>
+      <node name="Gradas_29"><entity name="Gradas_29" meshFile="Gradas_29.mesh"/></node>
+      <node name="Gradas_30"><entity name="Gradas_30" meshFile="Gradas_30.mesh"/></node>
+      <node name="Gradas_31"><entity name="Gradas_31" meshFile="Gradas_31.mesh"/></node>
+      <node name="Gradas_32"><entity name="Gradas_32" meshFile="Gradas_32.mesh"/></node>
+      <node name="Gradas_33"><entity name="Gradas_33" meshFile="Gradas_33.mesh"/></node>
+      <node name="Gradas_34"><entity name="Gradas_34" meshFile="Gradas_34.mesh"/></node>
+      <node name="Gradas_35"><entity name="Gradas_35" meshFile="Gradas_35.mesh"/></node>
+      <node name="Gradas_36"><entity name="Gradas_36" meshFile="Gradas_36.mesh"/></node>
+      <node name="Gradas_37"><entity name="Gradas_37" meshFile="Gradas_37.mesh"/></node>
+      <node name="Gradas_38"><entity name="Gradas_38" meshFile="Gradas_38.mesh"/></node>
+      <node name="Gradas_39"><entity name="Gradas_39" meshFile="Gradas_39.mesh"/></node>
+      <node name="Gradas_40"><entity name="Gradas_40" meshFile="Gradas_40.mesh"/></node>
+      <node name="Gradas_41"><entity name="Gradas_41" meshFile="Gradas_41.mesh"/></node>
+    </node>
+
+    <!-- Fachadas: se exportaron mas abajo (piso en y=-23.9), por eso se suben 23.9 -->
+    <node name="Fachadas">
+      <position x="0" y="23.9" z="0"/>
+      <node name="Fachada_ETFE"><entity name="Fachada_ETFE" meshFile="Fachada_ETFE.mesh"/></node>
+      <node name="Fac_Onda_Azul"><entity name="Fac_Onda_Azul" meshFile="Fac_Onda_Azul.mesh"/></node>
+      <node name="Fac_Onda_Dorada"><entity name="Fac_Onda_Dorada" meshFile="Fac_Onda_Dorada.mesh"/></node>
+      <node name="Fac_Titulo"><entity name="Fac_Titulo" meshFile="Fac_Titulo_malla.mesh"/></node>
+    </node>
+  </nodes>
+</scene>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene formatVersion="1.1">
+  <nodes>
+    <!-- Todas las pruebas vienen ya en las coordenadas del campo: se colocan en el origen -->
+    <node name="Marcas_Jabalina"><entity name="Marcas_Jabalina" meshFile="Marcas_Jabalina.mesh"/></node>
+    <node name="Marcas_Disco"><entity name="Marcas_Disco" meshFile="Marcas_Disco.mesh"/></node>
+    <node name="Jaula_Disco"><entity name="Jaula_Disco" meshFile="Jaula_Disco.mesh"/></node>
+    <node name="Salto_Alto"><entity name="Salto_Alto" meshFile="SaltoAlto.mesh"/></node>
+    <node name="Salto_Garrocha"><entity name="Salto_Garrocha" meshFile="SaltoGarrocha.mesh"/></node>
+    <node name="Salto_Longitud"><entity name="Salto_Longitud" meshFile="SaltoLongitud.mesh"/></node>
+    <node name="Salto_Triple"><entity name="Salto_Triple" meshFile="SaltoTriple.mesh"/></node>
+    <node name="Foso_Obstaculos"><entity name="Foso_Obstaculos" meshFile="FosoObstaculos.mesh"/></node>
+  </nodes>
+</scene>

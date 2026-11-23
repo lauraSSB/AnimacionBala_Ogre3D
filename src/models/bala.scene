@@ -2,8 +2,8 @@
 <scene author="laura" formatVersion="1.1" >
   <nodes >
     <node name="Marcas_Bala" >
-      <position x="0.0" y="0.0" z="0.0" />
-      <entity meshFile="Marcas_Bala.mesh" name="Marcas_Bala" />
+        <position x="0" y="0.0" z="0" />
+        <entity meshFile="Marcas_Bala.mesh" name="Marcas_Bala" />
     </node>
 
     <node name="yellow_ball" >
@@ -31,11 +31,51 @@
       </entity>
     </node>
 
+    <node name="rubber_duck">
+    <position x="-18" y="2" z="60"/>
+    <scale x="0.02" y="0.02" z="0.02"/>
+    <entity name="rubber_duck" meshFile="RubberDuck.obj" material="RubberDuck">
+        <userData>
+        <property name="collider" type="string" data="hull"/>
+        <property name="mass" type="float" data="0.5"/>
+        <property name="restitution" type="float" data="0.4"/>
+        <property name="friction" type="float" data="0.6"/>
+        </userData>
+    </entity>
+    </node>
+
+    <node name="banana">
+    <position x="18" y="2" z="60"/>
+    <scale x="1" y="1" z="1"/>
+    <entity name="banana" meshFile="Banana_malla.mesh" material="Banana_Piel">
+        <userData>
+        <property name="collider" type="string" data="hull"/>
+        <property name="mass" type="float" data="0.12"/>
+        <property name="restitution" type="float" data="0.1"/>
+        <property name="friction" type="float" data="0.8"/>
+        </userData>
+    </entity>
+    </node>
+
+    <node name="cerveza">
+    <position x="-18" y="2" z="60"/>
+    <scale x="10" y="10" z="10"/>
+    <entity name="cerveza" meshFile="Cerveza_malla.mesh">
+        <userData>
+        <property name="collider" type="string" data="hull"/>
+        <property name="mass" type="float" data="0.35"/>
+        <property name="restitution" type="float" data="0.4"/>
+        <property name="friction" type="float" data="0.4"/>
+        </userData>
+    </entity>
+    </node>
+    
+
     <node name="MainCamera" >
       <position x="0.0" y="60.0" z="-150.0" />
       <rotation qw="0.002405" qx="-0.004120" qy="0.983850" qz="0.178934" />
       <camera fov="0.503380" name="MainCamera" projectionType="perspective" >
-        <clipping far="10000.0" near="0.1" />
+        <clipping far="2000.0" near="1.0" />
       </camera>
     </node>
     
@@ -44,14 +84,14 @@
       <position x="-18" y="2" z="65.0" />
       <rotation qw="0.999657" qx="-0.026177" qy="0.0" qz="0.0" />
       <camera fov="0.503380" name="FixedCamera" projectionType="perspective" >
-        <clipping far="10000.0" near="0.1" />
+        <clipping far="2000.0" near="0.3" />
       </camera>
     </node>
 
     <node name="BallCamera" >
       <position x="-18.0" y="1.8" z="57.5" />
       <camera fov="0.503380" name="BallCamera" projectionType="perspective" >
-        <clipping far="10000.0" near="0.05" />
+        <clipping far="2000.0" near="0.2" />
       </camera>
     </node>
 
@@ -59,7 +99,7 @@
       <position x="-18.0" y="1.8" z="60" />
       <rotation qw="0.999657" qx="-0.026177" qy="0.0" qz="0.0" />
       <camera fov="0.503380" name="ManCamera" projectionType="perspective" >
-        <clipping far="10000.0" near="0.05" />
+        <clipping far="2000.0" near="0.2" />
       </camera>
     </node>
   </nodes>
