@@ -3,6 +3,8 @@ add_executable(
   Application.cxx
   PhysicsModel.cxx
   CameraManager.cxx
+  ShootController.cxx
+  ShootMeterView.cxx
   main.cxx
   )
 target_link_libraries(

@@ -15,7 +15,7 @@ class CameraManager
 public: 
     using Self = CameraManager;
 
-    enum CameraId { Fixed = 0, Ball = 1, Global = 2, Man = 3, Count };
+    enum CameraId { Ball = 0, Fixed = 1, Global = 2, Man = 3, Count };
 
 public: 
     CameraManager( ) = default; 
@@ -25,6 +25,9 @@ public:
     void select ( CameraId id );
     void selectNext( );
     void selectPrevious( );
+    bool isActive( CameraId id ) const; 
+
+    Ogre::Camera* getActiveCamera( ) const;
 
     void update( );
 
@@ -33,6 +36,8 @@ public:
     virtual bool mouseReleased( const OgreBites::MouseButtonEvent& evt ) override; 
     
     void setCycling( bool enabled );
+    void setFollowedNode( Ogre::SceneNode* node );
+    void setWheelBlocked( bool blocked );
 
     virtual bool mouseWheelRolled( const OgreBites::MouseWheelEvent& evt ) override;
 
@@ -47,6 +52,7 @@ private:
     Ogre::SceneNode*                m_BallCameraNode = nullptr;
     Ogre::SceneNode*                m_FollowedNode = nullptr;
     OgreBites::CameraMan*           m_CamMan = nullptr;
+    bool m_WheelBlocked = false;
     bool m_Cycling = false;
 };
 

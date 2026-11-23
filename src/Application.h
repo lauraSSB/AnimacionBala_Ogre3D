@@ -4,6 +4,8 @@
 #include <OgreApplicationContext.h>
 #include "PhysicsModel.h"
 #include "CameraManager.h"
+#include "ShootController.h"
+#include "ShootMeterView.h"
 
 namespace Ogre      { class Entity; }
 
@@ -28,6 +30,8 @@ public:
     virtual void frameRendered( const Ogre::FrameEvent& evt ) override;
     virtual bool keyPressed( const OgreBites::KeyboardEvent& evt ) override;
     virtual bool keyReleased( const OgreBites::KeyboardEvent& evt ) override;
+    virtual bool mouseWheelRolled( const OgreBites::MouseWheelEvent& evt ) override;
+
     // Main method
     virtual void go( );
 
@@ -36,14 +40,20 @@ protected:
     virtual void _configureCamera( );
     virtual void _loadScene( );
     virtual void _configurePhysics( );
+    void _shootBall( float speed );
+    void _selectProjectile( std::size_t index );
+    void _cycleProjectile( int step );
 
 protected: 
     std::string m_ResourcesFile;
     
     Ogre::SceneManager* m_SceneMgr = nullptr;
     CameraManager m_CameraMgr;
+    ShootController m_Shot; 
+    ShootMeterView  m_MeterView;
     PhysicsModel m_Physics;
-    bool m_CameraKeyHeld = false;
+    std::size_t m_CurrentProjectile = 0;
+    bool m_ObjectKeyHeld = false;
 };
 
 

@@ -11,6 +11,8 @@ namespace
     const char* const kGlobalCameraName = "MainCamera";
     const char* const kManCameraName    = "ManCamera";
 
+    const float kMinGlobalCameraY       = 0.5f;  
+
     const Ogre::Vector3 kBallCameraOffset( 0.0f, 0.8f, -2.5f );
 }
 
@@ -79,6 +81,22 @@ selectPrevious( )
 }
 
 //--------------------------------------------------------------------------
+// Indica si la Camara id esta activa
+bool CameraManager::
+isActive( CameraId id ) const
+{
+    return( this->m_Active == static_cast< std::size_t >( id ) );
+}
+
+//--------------------------------------------------------------------------
+// Cámara que se está usando ahora
+Ogre::Camera* CameraManager::
+getActiveCamera( ) const
+{
+    return( this->m_Cameras[ this->m_Active ] );
+}
+
+//--------------------------------------------------------------------------
 // Pone la cámara de la bola detrás de ella y la apunta hacia ella
 void CameraManager::
 update( )
@@ -96,7 +114,20 @@ update( )
 bool CameraManager::
 mouseMoved( const OgreBites::MouseMotionEvent& evt )
 {
-    return( this->_isGlobalActive( ) && this->m_CamMan->mouseMoved( evt ) );
+    if( !this->_isGlobalActive( ) )
+        return( false );
+
+    bool handled = this->m_CamMan->mouseMoved( evt );
+
+    Ogre::SceneNode* node = this->m_Cameras[ Global ]->getParentSceneNode( );
+    Ogre::Vector3 pos = node->getPosition( );
+    if( pos.y < kMinGlobalCameraY )
+    {
+        pos.y = kMinGlobalCameraY;
+        node->setPosition( pos );
+        node->lookAt( Ogre::Vector3::ZERO, Ogre::Node::TS_WORLD );
+    }
+    return( handled );
 }
 
 //--------------------------------------------------------------------------
@@ -124,6 +155,22 @@ setCycling( bool enabled )
 }
 
 //--------------------------------------------------------------------------
+//Cambia el nodo que sigue la cámara de la bola
+void CameraManager::
+setFollowedNode( Ogre::SceneNode* node )
+{
+    this->m_FollowedNode = node;
+}
+
+//--------------------------------------------------------------------------
+// Si está activo, la rueda no hace zoom (la usa otra función)
+void CameraManager::
+setWheelBlocked( bool blocked )
+{
+    this->m_WheelBlocked = blocked;
+}
+
+//--------------------------------------------------------------------------
 // Con el modo activo, la rueda cambia de cámara: hacia arriba avanza, hacia
 // abajo retrocede. Si no, hace zoom, pero solo si la cámara global está activa
 bool CameraManager::
@@ -137,6 +184,10 @@ mouseWheelRolled( const OgreBites::MouseWheelEvent& evt )
             this->selectPrevious( );
         return( true );
     }
+
+    if( this->m_WheelBlocked ) 
+        return( false );
+
     return( this->_isGlobalActive( ) && this->m_CamMan->mouseWheelRolled( evt ) );
 }
 

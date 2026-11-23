@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <string>
+#include <map>
 #include <OgreBullet.h>
 
 namespace Ogre { class Entity; class SceneNode; class UserObjectBindings; }
@@ -34,9 +35,11 @@ public:
 
     //Agregar un cuerpo a una entidad
     btRigidBody* addBody( Ogre::Entity* entity, const BodyProperties& props );
+    void launch( const std::string& entityName, const Ogre::Vector3& position, const Ogre::Vector3& velocity );
 
     void setSimulating( bool simulating );
     bool isSimulating( ) const; 
+    void setBodyEnabled( const std::string& entityName, bool enabled );
 
     // Actualiza la simulación, se llama una vez por frame
     void update( double elapsedSeconds );
@@ -55,6 +58,7 @@ private:
 
 private:
     std::unique_ptr< Ogre::Bullet::DynamicsWorld > m_World;
+    std::map< std::string, btRigidBody* > m_Bodies;
     bool m_Simulating { false };
 };
 

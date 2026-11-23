@@ -36,9 +36,52 @@ addBody( Ogre::Entity* entity, const BodyProperties& props )
         body->setCcdMotionThreshold( radius );
         body->setCcdSweptSphereRadius( radius * 0.8f );
     }
-    
+
+    this->m_Bodies[ entity->getName( ) ] = body;
     return( body );
 }
+
+//--------------------------------------------------------------------------
+//Reinicia un cuerpo que ya existe, lo pasa a position e inicializa la velocidad
+void PhysicsModel::
+launch(const std::string& entityName, const Ogre::Vector3& position, const Ogre::Vector3& velocity ){
+    auto it = this->m_Bodies.find( entityName );
+    if ( it == this->m_Bodies.end( ) )
+        throw std::runtime_error( "PhysicsModel: no body for " + entityName );
+
+    btRigidBody* body = it->second;
+
+    btTransform transform; 
+    transform.setIdentity( );
+    transform.setOrigin( Ogre::Bullet::convert( position ) );
+
+    body->setWorldTransform( transform );
+    body->setInterpolationWorldTransform( transform );
+    body->clearForces( );
+    body->setLinearVelocity( Ogre::Bullet::convert( velocity ) );
+    body->setAngularVelocity( btVector3( 0, 0, 0 ) );
+    body->activate( true );
+}
+
+//--------------------------------------------------------------------------
+// Activa o desactiva un cuerpo: si está apagado sale del mundo de Bullet
+void PhysicsModel::
+setBodyEnabled( const std::string& entityName, bool enabled )
+{
+    auto it = this->m_Bodies.find( entityName );
+    if( it == this->m_Bodies.end( ) ){
+        throw std::runtime_error( "PhysicsModel: No body for " + entityName );
+    }
+
+    btRigidBody* body = it->second; 
+    btDynamicsWorld* world = this->m_World->getBtWorld( );
+
+    if( enabled && !body->isInWorld( ) )
+        world->addRigidBody( body );
+    else if( !enabled && body->isInWorld( ) )
+        world->removeRigidBody( body );
+}
+
 
 //--------------------------------------------------------------------------
 //Encender o apagar la simulación. CUando esta apagada los objetos quedan congelados
