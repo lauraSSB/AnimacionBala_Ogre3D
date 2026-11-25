@@ -21,7 +21,6 @@ namespace
     const float kMarkerWidth = 0.006f;
 
     // Crea un panel de color dentro de la barra.
-    // 'start' y 'end' son fracciones de la barra (0 a 1)
     Ogre::OverlayElement* createZone(
         Ogre::OverlayContainer* bar,
         const std::string& name,

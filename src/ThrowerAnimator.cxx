@@ -23,7 +23,7 @@ build(
         this->m_Throw->setEnabled( false );
     }
     else
-        this->m_Throw->setEnabled( true );   // se queda en el primer fotograma
+        this->m_Throw->setEnabled( true ); 
 }
 
 //--------------------------------------------------------------------------
@@ -86,7 +86,7 @@ update( float dt )
             this->m_Idle->setEnabled( true );
         }
         else
-            this->m_Throw->setTimePosition( 0.0f );   // vuelve a la pose de espera
+            this->m_Throw->setTimePosition( 0.0f ); 
     }
 }
 
