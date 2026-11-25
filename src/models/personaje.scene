@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene formatVersion="1.1">
+  <nodes>
+    <node name="Lanzador_Atleta">
+      <position x="-18" y="0.1" z="60"/>
+      <entity name="Lanzador_Atleta" meshFile="Atleta_malla.mesh"/>
+    </node>
+    <node name="Lanzador_Warrior">
+      <position x="-18" y="0.1" z="60"/>
+      <scale x="0.6" y="0.6" z="0.6"/>
+      <entity name="Lanzador_Warrior" meshFile="Warrior_mesh.mesh"/>
+    </node>
+    <node name="Lanzador_Cleric">
+      <position x="-18" y="0.1" z="60"/>
+      <scale x="0.5" y="0.5" z="0.5"/>
+      <entity name="Lanzador_Cleric" meshFile="Cleric_mesh.mesh"/>
+    </node>
+  </nodes>
+</scene>

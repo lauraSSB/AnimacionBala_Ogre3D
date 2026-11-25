@@ -35,7 +35,7 @@ public:
 
     //Agregar un cuerpo a una entidad
     btRigidBody* addBody( Ogre::Entity* entity, const BodyProperties& props );
-    void launch( const std::string& entityName, const Ogre::Vector3& position, const Ogre::Vector3& velocity );
+    void launch( const std::string& entityName, const Ogre::Vector3& position, const Ogre::Vector3& velocity, const Ogre::Vector3& angularVelocity = Ogre::Vector3::ZERO );
 
     void setSimulating( bool simulating );
     bool isSimulating( ) const; 
@@ -43,6 +43,7 @@ public:
 
     // Actualiza la simulación, se llama una vez por frame
     void update( double elapsedSeconds );
+    bool isTouching( const std::string& entityName );
 
 private: 
     void _buildNode( Ogre::SceneNode* node );

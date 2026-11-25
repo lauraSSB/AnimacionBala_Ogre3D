@@ -1,0 +1,17 @@
+// Cielo generado por codigo (degradado, nubes y sol). Orden de caras en Ogre: front back left right up down
+material Cielo_Azul
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_write off
+            texture_unit
+            {
+                cubic_texture cielo_ft.png cielo_bk.png cielo_lf.png cielo_rt.png cielo_up.png cielo_dn.png separateUV
+                tex_address_mode clamp
+            }
+        }
+    }
+}

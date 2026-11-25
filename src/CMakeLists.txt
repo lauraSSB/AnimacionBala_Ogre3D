@@ -5,6 +5,8 @@ add_executable(
   CameraManager.cxx
   ShootController.cxx
   ShootMeterView.cxx
+  ThrowerAnimator.cxx
+  ResultView.cxx
   main.cxx
   )
 target_link_libraries(

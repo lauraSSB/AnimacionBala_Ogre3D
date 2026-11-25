@@ -57,5 +57,25 @@
       <node name="Fac_Onda_Dorada"><entity name="Fac_Onda_Dorada" meshFile="Fac_Onda_Dorada.mesh"/></node>
       <node name="Fac_Titulo"><entity name="Fac_Titulo" meshFile="Fac_Titulo_malla.mesh"/></node>
     </node>
+
+    <!-- Mundo: suelo, postes y arboles. Se exportaron con el suelo en y=-24 (-23.8 arriba).
+         Se suben 23.7 para que el suelo quede justo bajo la pista (y=-0.1) y no parpadee con ella -->
+    <node name="Mundo">
+      <position x="0" y="23.7" z="0"/>
+      <node name="Mundo_Suelo"><entity name="Mundo_Suelo" meshFile="Mundo_Suelo.mesh"/></node>
+      <node name="Mundo_Postes"><entity name="Mundo_Postes" meshFile="Mundo_Postes.mesh"/></node>
+      <node name="Mundo_Arboles_1"><entity name="Mundo_Arboles_1" meshFile="Mundo_Arboles_1.mesh"/></node>
+      <node name="Mundo_Arboles_2"><entity name="Mundo_Arboles_2" meshFile="Mundo_Arboles_2.mesh"/></node>
+      <node name="Mundo_Arboles_3"><entity name="Mundo_Arboles_3" meshFile="Mundo_Arboles_3.mesh"/></node>
+      <node name="Mundo_Arboles_4"><entity name="Mundo_Arboles_4" meshFile="Mundo_Arboles_4.mesh"/></node>
+      <node name="Mundo_Arboles_5"><entity name="Mundo_Arboles_5" meshFile="Mundo_Arboles_5.mesh"/></node>
+      <node name="Mundo_Arboles_6"><entity name="Mundo_Arboles_6" meshFile="Mundo_Arboles_6.mesh"/></node>
+      <node name="Mundo_Arboles_7"><entity name="Mundo_Arboles_7" meshFile="Mundo_Arboles_7.mesh"/></node>
+    </node>
+
+    <node name="Zona_Prohibida">
+      <position x="0" y="0" z="0"/>
+      <entity name="Zona_Prohibida" meshFile="Zona_Prohibida.mesh" visible="false"/>
+    </node>
   </nodes>
 </scene>

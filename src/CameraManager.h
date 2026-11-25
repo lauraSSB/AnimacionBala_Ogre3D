@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <OgreInput.h>
+#include <OgreVector.h>
 
 namespace Ogre          { class Camera; class Viewport; class SceneManager; 
                           class SceneNode; class RenderWindow; }
@@ -36,7 +37,7 @@ public:
     virtual bool mouseReleased( const OgreBites::MouseButtonEvent& evt ) override; 
     
     void setCycling( bool enabled );
-    void setFollowedNode( Ogre::SceneNode* node );
+    void setFollowedNode( Ogre::Node* node );
     void setWheelBlocked( bool blocked );
 
     virtual bool mouseWheelRolled( const OgreBites::MouseWheelEvent& evt ) override;
@@ -44,16 +45,22 @@ public:
 private: 
     Ogre::Camera* _requireCamera( Ogre::SceneManager* sceneMgr, const std::string& name );
     bool _isGlobalActive( ) const;
+    void _keepGlobalCameraInWorld( );
+    void _buildForbiddenZone( Ogre::SceneManager* sceneMgr );
+    bool _isInsideForbiddenZone( const Ogre::Vector3& point ) const;
+    void _keepGlobalCameraOutOfZone( );
 
 private: 
     Ogre::Viewport*                 m_Viewport = nullptr; 
     std::vector< Ogre::Camera* >    m_Cameras; 
     std::size_t                     m_Active = Global; 
     Ogre::SceneNode*                m_BallCameraNode = nullptr;
-    Ogre::SceneNode*                m_FollowedNode = nullptr;
+    Ogre::Node*                     m_FollowedNode = nullptr;
     OgreBites::CameraMan*           m_CamMan = nullptr;
     bool m_WheelBlocked = false;
     bool m_Cycling = false;
+    std::vector< Ogre::Vector3 > m_ZoneTriangles; 
+    Ogre::Vector3                m_LastGoodPosition;
 };
 
 #endif

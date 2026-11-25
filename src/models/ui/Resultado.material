@@ -1,0 +1,58 @@
+// Colores del cartel de resultado (estilo transmision deportiva)
+material Resultado/Acento
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_check off
+            depth_write off
+
+            texture_unit
+            {
+                colour_op_ex source1 src_manual src_current 0.95 0.72 0.10
+            }
+        }
+    }
+}
+
+material Resultado/Titulo
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_check off
+            depth_write off
+            scene_blend alpha_blend
+
+            texture_unit
+            {
+                colour_op_ex source1 src_manual src_current 0.04 0.19 0.50
+                alpha_op_ex source1 src_manual src_current 0.95
+            }
+        }
+    }
+}
+
+material Resultado/Cuerpo
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_check off
+            depth_write off
+            scene_blend alpha_blend
+
+            texture_unit
+            {
+                colour_op_ex source1 src_manual src_current 0.04 0.05 0.08
+                alpha_op_ex source1 src_manual src_current 0.85
+            }
+        }
+    }
+}

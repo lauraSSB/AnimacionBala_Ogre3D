@@ -6,6 +6,22 @@
         <entity meshFile="Marcas_Bala.mesh" name="Marcas_Bala" />
     </node>
 
+    <node name="Bala">
+      <position x="-18" y="2" z="60"/>
+      <scale x="1" y="1" z="1"/>
+      <entity name="Bala" meshFile="Bala_malla.mesh">
+        <userData>
+          <property name="collider" type="string" data="sphere"/>
+          <property name="mass" type="float" data="7.26"/>
+          <property name="restitution" type="float" data="0.45"/>
+          <property name="friction" type="float" data="0.7"/>
+          <property name="rolling_friction" type="float" data="0.1"/>
+          <property name="linear_damping" type="float" data="0.0"/>
+          <property name="angular_damping" type="float" data="0.1"/>
+        </userData>
+      </entity>
+    </node>
+
     <node name="yellow_ball" >
       <scale x="0.02" y="0.02" z="0.02" />
       <position x="-18" y="20" z="60.0" />
@@ -14,18 +30,6 @@
           <property name="collider" type="string" data="sphere" />
           <property name="mass" type="float" data="7.26" />
           <property name="restitution" type="float" data="1" />
-          <property name="friction" type="float" data="0.6" />
-        </userData>
-      </entity>
-    </node>
-
-    <node name="red_ball" >
-      <position x="15.0" y="15.0" z="0.0" />
-      <entity meshFile="red_ball.mesh" name="red_ball" >
-        <userData>
-          <property name="collider" type="string" data="sphere" />
-          <property name="mass" type="float" data="1" />
-          <property name="restitution" type="float" data="0.8" />
           <property name="friction" type="float" data="0.6" />
         </userData>
       </entity>
@@ -59,7 +63,7 @@
 
     <node name="cerveza">
     <position x="-18" y="2" z="60"/>
-    <scale x="10" y="10" z="10"/>
+    <scale x="1" y="1" z="1"/>
     <entity name="cerveza" meshFile="Cerveza_malla.mesh">
         <userData>
         <property name="collider" type="string" data="hull"/>
@@ -72,10 +76,10 @@
     
 
     <node name="MainCamera" >
-      <position x="0.0" y="60.0" z="-150.0" />
-      <rotation qw="0.002405" qx="-0.004120" qy="0.983850" qz="0.178934" />
+      <position x="298.615" y="64.558" z="6.732" />
+      <rotation qw="0.710985" qx="-0.075958" qy="0.695137" qz="0.074265" />
       <camera fov="0.503380" name="MainCamera" projectionType="perspective" >
-        <clipping far="2000.0" near="1.0" />
+        <clipping far="2000.0" near="0.3" />
       </camera>
     </node>
     

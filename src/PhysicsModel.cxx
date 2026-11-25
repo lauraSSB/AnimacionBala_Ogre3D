@@ -44,7 +44,13 @@ addBody( Ogre::Entity* entity, const BodyProperties& props )
 //--------------------------------------------------------------------------
 //Reinicia un cuerpo que ya existe, lo pasa a position e inicializa la velocidad
 void PhysicsModel::
-launch(const std::string& entityName, const Ogre::Vector3& position, const Ogre::Vector3& velocity ){
+launch(
+    const std::string& entityName,
+    const Ogre::Vector3& position,
+    const Ogre::Vector3& velocity,
+    const Ogre::Vector3& angularVelocity
+)
+{
     auto it = this->m_Bodies.find( entityName );
     if ( it == this->m_Bodies.end( ) )
         throw std::runtime_error( "PhysicsModel: no body for " + entityName );
@@ -59,7 +65,7 @@ launch(const std::string& entityName, const Ogre::Vector3& position, const Ogre:
     body->setInterpolationWorldTransform( transform );
     body->clearForces( );
     body->setLinearVelocity( Ogre::Bullet::convert( velocity ) );
-    body->setAngularVelocity( btVector3( 0, 0, 0 ) );
+    body->setAngularVelocity( Ogre::Bullet::convert( angularVelocity ) );
     body->activate( true );
 }
 
@@ -106,6 +112,30 @@ update( double elapsedSeconds )
 {
     if( this->m_Simulating && this->m_World != nullptr )
         this->m_World->getBtWorld( )->stepSimulation( elapsedSeconds, 10 );
+}
+
+//--------------------------------------------------------------------------
+//Revisa si una entidad entra en contacto con otra (para saber cuando cae la bola)
+bool PhysicsModel::
+isTouching( const std::string& entityName )
+{
+    auto it = this->m_Bodies.find( entityName );
+    if( it == this->m_Bodies.end( ) ){
+        throw std::runtime_error( "PhysicsModel: No body for " + entityName );
+    }
+
+    btRigidBody* body = it->second; 
+
+    btDispatcher* dispatcher = this->m_World->getBtWorld( )->getDispatcher( );
+
+    for( int i = 0; i < dispatcher->getNumManifolds( ); ++i )
+    {
+        btPersistentManifold* manifold = dispatcher->getManifoldByIndexInternal( i );
+        if( manifold->getNumContacts( ) > 0
+            && ( manifold->getBody0( ) == body || manifold->getBody1( ) == body ) )
+            return( true );
+    }
+    return( false );
 }
 
 //--------------------------------------------------------------------------
